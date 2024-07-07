@@ -1,0 +1,155 @@
+.home-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.toggle-button {
+  align-self: center;
+  height: 40px;
+  width: 120px;
+  border-radius: 30px;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  padding-right: 10px;
+  padding-left: 5px;
+  background-color: #efefefe3;
+}
+
+.mode-icon {
+  font-size: 14px;
+}
+
+.mode-icon-container {
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.dark-toggle-btn {
+  background-color: #1c1c1d;
+  color: white;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.fixed-button {
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  width: 270px;
+  height: 45px;
+  background-color: #33b249;
+  border-radius: 30px;
+  color: white;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-button-container {
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%);
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+.add-icon {
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.posts-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-top: 50px;
+  padding-bottom: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.posts-list {
+  width: 100%;
+  max-width: 900px;
+  column-count: 1;
+  column-gap: 20px;
+  padding-top: 40px;
+  overflow: auto;
+  list-style-type: none;
+  padding-left: 0px;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .fixed-button {
+    height: 50px;
+  }
+  .toggle-button {
+    height: 50px;
+  }
+  .mode-icon {
+    font-size: 16px;
+  }
+  .mode-icon-container {
+    height: 40px;
+    width: 40px;
+  }
+  .posts-list {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .posts-list {
+    column-count: 3;
+  }
+}
