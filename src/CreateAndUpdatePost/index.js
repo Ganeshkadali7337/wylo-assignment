@@ -27,7 +27,7 @@ class CreateAndUpdatePost extends Component {
         title: post.title,
         content: post.content,
         img: post.img,
-        editPostId: id,
+        editPostId: post.id,
       });
     }
   };
@@ -54,10 +54,12 @@ class CreateAndUpdatePost extends Component {
   };
 
   onDelImg = () => {
-    const { editPostId } = this.state;
+    const { editPostId, title, content } = this.state;
     const posts = JSON.parse(localStorage.getItem("posts"));
     const updatedPosts = posts.map((post) =>
-      post.id === editPostId ? { ...post, img: null } : post
+      post.id === editPostId
+        ? { id: editPostId, title, content, img: null }
+        : post
     );
     localStorage.setItem("posts", JSON.stringify(updatedPosts));
     this.setState({ img: null, imgFile: null }, this.getData);
