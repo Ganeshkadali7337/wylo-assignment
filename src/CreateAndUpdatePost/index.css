@@ -100,3 +100,9 @@ textarea::placeholder {
   color: white;
   cursor: pointer;
 }
+
+.submit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
