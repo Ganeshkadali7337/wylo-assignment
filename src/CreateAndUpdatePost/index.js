@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import { TailSpin } from "react-loader-spinner";
+
 import { v4 as uuidv4 } from "uuid";
 
 import "./index.css";
@@ -11,6 +13,7 @@ class CreateAndUpdatePost extends Component {
     img: null,
     editPostId: null,
     imgFile: null,
+    isLoading: false,
   };
 
   getData = () => {
@@ -72,6 +75,7 @@ class CreateAndUpdatePost extends Component {
   };
 
   onSubmitForm = async (e) => {
+    this.setState({ isLoading: true });
     e.preventDefault();
     const { img, editPostId, title, content, imgFile } = this.state;
     if (title && content) {
@@ -111,6 +115,7 @@ class CreateAndUpdatePost extends Component {
           post.id === editPostId ? updatedPost : post
         );
         localStorage.setItem("posts", JSON.stringify(updatedPosts));
+        this.setState({ isLoading: false });
         alert("Post Updated");
         const { history } = this.props;
         history.replace("/");
@@ -119,8 +124,10 @@ class CreateAndUpdatePost extends Component {
         const newPost = { id: uuidv4(), title, content, img: imgUrl };
         console.log(newPost);
         localStorage.setItem("posts", JSON.stringify([...posts, newPost]));
+        this.setState({ isLoading: false });
         alert("Post Added");
         const { history } = this.props;
+
         history.replace("/");
       }
     } else {
@@ -129,7 +136,7 @@ class CreateAndUpdatePost extends Component {
   };
 
   render() {
-    const { img, editPostId, title, content } = this.state;
+    const { img, editPostId, title, content, isLoading } = this.state;
     return (
       <div className="add-post-container">
         <div className="form-container">
@@ -170,21 +177,53 @@ class CreateAndUpdatePost extends Component {
               </div>
             )}
             {editPostId ? (
-              <div>
-                <button className="submit-btn" type="submit">
-                  Update Post
-                </button>
+              <div className="submit-container">
+                {isLoading ? (
+                  <TailSpin
+                    height="30"
+                    width="30"
+                    color="#33b249"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                ) : (
+                  <button className="submit-btn" type="submit">
+                    Update Post
+                  </button>
+                )}
               </div>
             ) : (
-              <button className="submit-btn" type="submit">
-                Add & Save Post
-              </button>
+              <div className="submit-container">
+                {isLoading ? (
+                  <TailSpin
+                    height="30"
+                    width="30"
+                    color="#33b249"
+                    ariaLabel="tail-spin-loading"
+                    radius="1"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                  />
+                ) : (
+                  <button className="submit-btn" type="submit">
+                    Add & Save Post
+                  </button>
+                )}
+              </div>
             )}
           </form>
-          <p className="or-para">Or</p>
-          <button className="submit-btn" onClick={this.onDeletePost}>
-            Delete Post
-          </button>
+          {editPostId && (
+            <div>
+              <p className="or-para">Or</p>
+              <button className="submit-btn" onClick={this.onDeletePost}>
+                Delete Post
+              </button>
+            </div>
+          )}
         </div>
       </div>
     );
