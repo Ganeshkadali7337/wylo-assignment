@@ -1,5 +1,7 @@
 import { Component } from "react";
 
+import { v4 as uuidv4 } from "uuid";
+
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 import { MdAddTask } from "react-icons/md";
@@ -10,39 +12,39 @@ import "./index.css";
 
 const posts = [
   {
-    id: 1,
+    id: uuidv4(),
     title: "First Post",
     content: "This is the content of the first post.",
     img: null,
   },
   {
-    id: 2,
+    id: uuidv4(),
     title: "Second Post",
     content: "This is the content of the second post.",
     img: "https://res.cloudinary.com/dzjz2ts9c/image/upload/v1715494622/Image_vtkotk.png",
   },
 
   {
-    id: 3,
+    id: uuidv4(),
     title: "Third Post",
     content: "This is the content of the third post.",
     img: "https://res.cloudinary.com/dzjz2ts9c/image/upload/v1715494622/Image_vtkotk.png",
   },
   {
-    id: 4,
+    id: uuidv4(),
     title: "Fourth Post",
     content: "This is the content of the third post.",
     img: null,
   },
 
   {
-    id: 5,
+    id: uuidv4(),
     title: "Fifth Post",
     content: "This is the content of the third post.",
     img: null,
   },
   {
-    id: 6,
+    id: uuidv4(),
     title: "sixth Post",
     content: "This is the content of the third post.",
     img: "https://res.cloudinary.com/dzjz2ts9c/image/upload/v1715494622/Image_vtkotk.png",
@@ -90,7 +92,7 @@ class PostsDisplay extends Component {
   }
 
   render() {
-    const { lightMode, postsData, ShowEditPopUp, editPostId } = this.state;
+    const { lightMode, postsData, editPostId } = this.state;
     const editPost = postsData.find((each) => each.id === editPostId);
     console.log(editPost);
     return (

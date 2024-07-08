@@ -18,14 +18,17 @@ const PostCardItem = (props) => {
         <h1 className={lightMode ? `post-title` : `post-title-dark`}>
           {title}
         </h1>
-        <button onClick={onClickEdit} className="edit-button">
+        <button
+          onClick={onClickEdit}
+          className={lightMode ? `edit-button` : `edit-button edit-btn-dark`}
+        >
           <TbEdit className="edit-icon" />
         </button>
       </div>
       <p className="post-content">{content}</p>
       {img && (
         <div>
-          <img className="img" src={img} alt={title} />
+          <img className="img" src={img} alt="post" />
         </div>
       )}
     </li>
