@@ -69,10 +69,10 @@ class CreateAndUpdatePost extends Component {
   };
 
   onSubmitForm = async (e) => {
-    this.setState({ isLoading: true });
     e.preventDefault();
     const { img, editPostId, title, content, imgFile } = this.state;
     if (title && content) {
+      this.setState({ isLoading: true });
       let imgUrl;
       if (imgFile) {
         let formData = new FormData();
@@ -126,11 +126,13 @@ class CreateAndUpdatePost extends Component {
       }
     } else {
       alert("Please provide title and description");
+      this.setState({ isLoading: false });
     }
   };
 
   render() {
     const { img, editPostId, title, content, isLoading } = this.state;
+    console.log(isLoading);
     return (
       <div className="add-post-container">
         <div className="form-container">
